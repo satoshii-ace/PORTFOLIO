@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+    <link rel="stylesheet" href="contacts.css" />
+    <link
+      rel="shortcut icon"
+      href="images/pexels-pixmike-413195.jpg"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav>
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <label class="logo"><img src="images/ashpic.jpg" alt="" /></label>
+      <ul>
+        <li><a href="Homepage.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contacts.html" class="active">Contacts</a></li>
+      </ul>
+    </nav>
+    <section class="contact">
+      <div class="content">
+        <h2>Contact Me</h2>
+        <p class="state">
+          If you want any inquiries, just hook me up with my socials or send an
+          email using the form below.
+        </p>
+      </div>
+      <div class="container">
+        <div class="contactInfo">
+          <div class="box">
+            <div class="icon"><ion-icon name="home-outline"></ion-icon></div>
+            <div class="text">
+              <h3>Address</h3>
+              <p>
+                Brgy. Margen NHA Ormoc City,<br />block 12 lot 41,<br />Leyte
+                Philippines
+              </p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="icon"><ion-icon name="call-outline"></ion-icon></div>
+            <div class="text">
+              <h3>Phone</h3>
+              <p>09756389389</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="icon"><ion-icon name="mail-outline"></ion-icon></div>
+            <div class="text">
+              <h3>Email</h3>
+              <p>torresashleyclint@gmail.com</p>
+            </div>
+          </div>
+          <h2 class="txt">Connect with me</h2>
+          <ul class="sci">
+            <li>
+              <a
+                href="https://www.facebook.com/ashleyclint.torres"
+                target="_blank"
+              >
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/satoshii_ace/" target="_blank">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/AshleyT93280904" target="_blank">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@satoshiii_30" target="_blank">
+                <ion-icon name="logo-tiktok"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/satoshiiTv" target="_blank">
+                <ion-icon name="logo-github"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="contactForm">
+          <form id="contact-form" action="javascript:void(0);">
+            <h2>Send Message</h2>
+            <div class="inputBox">
+              <input type="text" name="name" required="required" />
+              <span>Full Name</span>
+            </div>
+            <div class="inputBox">
+              <input type="email" name="email" required="required" />
+              <span>Email</span>
+            </div>
+            <div class="inputBox">
+              <textarea
+                name="message"
+                required="required"
+                id="message"
+              ></textarea>
+              <span>Type your Message...</span>
+            </div>
+            <div class="inputBox">
+              <input type="submit" value="Send" onclick="sendEmail()" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="modal" id="confirmation-modal">
+      <div class="modal-content">
+        <span class="close" id="close-modal">&times;</span>
+        <h2>Thank You!</h2>
+        <p>Your message has been sent.</p>
+      </div>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const contactForm = document.getElementById("contact-form");
+        const confirmationModal = document.getElementById("confirmation-modal");
+        const closeModal = document.getElementById("close-modal");
+
+        function sendEmail() {
+          const email = "torresashleyclint@gmail.com";
+          const subject = "My Email Subject";
+          const message = document.getElementById("message").value;
+
+          const mailtoLink = `mailto:${email}?subject=${subject}&body=${encodeURIComponent(
+            message
+          )}`;
+
+          window.open(mailtoLink);
+        }
+
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          confirmationModal.style.display = "block";
+          sendEmail();
+        });
+
+        closeModal.addEventListener("click", function () {
+          confirmationModal.style.display = "none";
+        });
+      });
+    </script>
+  </body>
+</html>
