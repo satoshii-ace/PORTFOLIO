@@ -2,18 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal website of Ashley Clint Torres" />
     <title>Homepage</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script>
+      
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-mode');
+      }
+    </script>
   </head>
-  <body>
+   <body>
+    <div class="cursor-glow"></div>
+    <div class="cursor-dot"></div>
+    
     <header class="header">
       <a href="#" class="logo">SATOSHI</a>
 
@@ -25,16 +30,20 @@
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
+      <div class="theme-toggle">
+          <i class='bx bxs-moon' id="theme-icon"></i>
+        </div>
        <div class="burger">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
     </header>
+    
     <section class="home" id="home">
       <div class="home-content">
         <h1>Hi, I'm Ashley Clint Torres</h1>
-        <h3>MLBB Amateur Player</h3>
+         <span id="element"></span>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
           consequuntur suscipit sint nam et sit repudiandae at ducimus
@@ -52,7 +61,7 @@
       </div>
       </div>
 
-      <div class="hero"><img src="" alt="hero"></div>
+      <div class="hero"><img src="assets/hero1.png" alt="hero"></div>
     </section>
 
     <section class="about" id="about">
@@ -64,8 +73,9 @@
           facilis, perspiciatis quae aliquid ratione ea tenetur suscipit dolorum
           esse odit eum recusandae.
         </p>
-        
-    </section>   
+      </div>
+    </section>
+    
     <section class="skills" id="skills">
       <h1>Skills</h1>
       <p>
@@ -81,7 +91,8 @@
         <div class="highlight-content"></div>
         <div class="highlight-content"></div>
       </div>
-      </section>
+    </section>
+    
     <section class="awards" id="awards">
       <h1>Awards</h1>
       <p>
@@ -105,8 +116,18 @@
           <div class="hero"></div>
         </div>
       </div>
-    </div>
     </section>
+
+    <section class="projects" id="projects">
+      <h1>Projects</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+        consectetur dolor earum quibusdam aliquid nesciunt placeat eos nisi sed
+        asperiores veritatis eligendi facilis ipsum, labore soluta magnam.
+        Libero, illo ipsum?
+      </p>
+    </section>
+
     <section class="contact" id="contact">
       <h1>Contact</h1>
       <p>
@@ -116,6 +137,16 @@
         Libero, illo ipsum?
       </p>
     </section>
-     <script src="script.js"></script>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+      var typed = new Typed('#element', {
+        strings: ['An IT Student', 'A Son', 'A MLBB Amateur Player', 'A Developer', 'A Friend'],
+        typeSpeed: 50,
+        loop: true,
+        backSpeed: 30,  // Optional: speed of backspacing
+        backDelay: 1000  // Optional: delay before backspacing (in ms)
+      });
+    </script>
   </body>
 </html>
