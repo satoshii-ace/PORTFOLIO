@@ -9,11 +9,21 @@ document.addEventListener('mousemove', (e) => {
   cursorDot.style.left = e.clientX + 'px';
   cursorDot.style.top = e.clientY + 'px';
 })
+
+//burger
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.header')
 burger.addEventListener('click', () => {
   nav.classList.toggle('navbar-active');
 })
+
+const navLinks = document.querySelectorAll('.navbar a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('navbar-active');
+  });
+});
      
       
 //light & dark mode
@@ -52,4 +62,17 @@ document.querySelector('.hero').addEventListener('mouseenter', () => {
 
 document.querySelector('.hero').addEventListener('mouseleave', () => {
   heroImg.src = originalSrc;
+});
+
+
+const aboutImg = document.querySelector('.about-img img');
+const origSrc = 'assets/about.png';
+const hovSrc = 'assets/about2.png';
+
+document.querySelector('.about-img').addEventListener('mouseenter', () => {
+  aboutImg.src = hovSrc;
+});
+
+document.querySelector('.about-img').addEventListener('mouseleave', () => {
+  aboutImg.src = origSrc;
 });

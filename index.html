@@ -7,6 +7,7 @@
     <title>Homepage</title>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script>
       
       const savedTheme = localStorage.getItem('theme');
@@ -41,7 +42,14 @@
     </header>
     
     <section class="home" id="home">
-      <div class="home-content">
+      <div class="home-content" 
+    data-aos="fade-up"
+    data-aos-delay="100"
+    data-aos-duration="1200"
+    data-aos-easing="ease-out-cubic"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center">
         <h1>Hi, I'm Ashley Clint Torres</h1>
          <span id="element"></span>
         <p>
@@ -58,18 +66,75 @@
       </div>
       </div>
 
-      <div class="hero"><img src="assets/hero1.png" alt="hero"></div>
+      <div class="hero" 
+    data-aos="fade-up"
+    data-aos-delay="300"
+    data-aos-duration="1200"
+    data-aos-easing="ease-out-cubic"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center"><img src="assets/hero1.png" alt="hero"></div>
     </section>
 
     <section class="about" id="about">
+      <h1 data-aos="fade-down" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-out-cubic">My Story</h1>
       <div class="about-content">
-        <h1>About Me</h1>
+        <div class="about-img"
+    data-aos="fade-right"
+    data-aos-delay="200"
+    data-aos-duration="1000"
+    data-aos-easing="ease-out-cubic"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center"><img src="assets/about.png" alt="about image"></div>
+        <div class="about-text"
+    data-aos="fade-left"
+    data-aos-delay="300"
+    data-aos-duration="1000"
+    data-aos-easing="ease-out-cubic"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-          quaerat accusamus laborum, consequuntur delectus aut quis, perferendis
-          facilis, perspiciatis quae aliquid ratione ea tenetur suscipit dolorum
-          esse odit eum recusandae.
+          Hello! I'm a 19-year-old second-year BSIT student at Eastern Visayas State University, residing in Brgy. Margen, Ormoc City, Leyte, Philippines.
         </p>
+        <p>
+          My educational journey began at Margen National High School, where I completed my junior high, and continued at ACLC College of Ormoc in the TVL Programming strand for senior high.
+        </p>
+        <p>
+          This experience ignited my passion for technology and programming, shaping my current academic pursuits.
+        </p>
+        <div class="school">
+          <h3>Schools Attended:</h3>
+          <div class="school-box"
+    data-aos="fade-up"
+    data-aos-delay="300"
+    data-aos-duration="1000"
+    data-aos-easing="ease-out-cubic"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center">
+            <div class="box"><img src="assets/valencia.png" alt=""></div>
+            <div class="box"><img src="assets/margen.png" alt=""></div>
+            <div class="box"><img src="assets/aclc.jpg" alt=""></div>
+            <div class="box"><img src="assets/evsu.png" alt=""></div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <h3 data-aos="fade-down" data-aos-delay="300" data-aos-duration="1000" data-aos-easing="ease-out-cubic">Hobbies:</h3>
+      <div class="hobbies"
+    data-aos="fade-up"
+    data-aos-delay="400"
+    data-aos-duration="1000"
+    data-aos-easing="ease-out-cubic"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center">
+        <div class="hobby-item"><img src="assets/gaming.jpg" alt="Gaming"><span class="label">Gaming</span></div>
+        <div class="hobby-item"><img src="assets/coding.jpg" alt="Coding"><span class="label">Coding</span></div>
+        <div class="hobby-item"><img src="assets/movie.jpg" alt="Watching Movies/Anime"><span class="label">Watching</span></div>
+        <div class="hobby-item"><img src="assets/music.jpg" alt="Listening to music"><span class="label">Listening</span></div>
       </div>
     </section>
     
@@ -136,14 +201,16 @@
     </section>
     <script src="script.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       var typed = new Typed('#element', {
         strings: ['An IT Student', 'A Son', 'A MLBB Amateur Player', 'A Developer', 'A Friend'],
         typeSpeed: 50,
         loop: true,
-        backSpeed: 30,  // Optional: speed of backspacing
-        backDelay: 1000  // Optional: delay before backspacing (in ms)
+        backSpeed: 30,  
+        backDelay: 1000  
       });
-    </script>
+      AOS.init();
+  </script>
   </body>
 </html>

@@ -22,14 +22,17 @@
     --glow-color: rgba(55, 150, 52, 0.3);
 }
 
+
+
 body {
     background-color: var(--bg-color);
     display: flex;
     flex-direction: column;
     color: var(--text-color);
     width: 100%;
-    height: calc(100% - 8px);
+    padding-top: 70px; /* Add space for fixed header */
     transition: background-color 0.3s ease, color 0.3s ease;
+    row-gap: 40px;
 }
 
 .cursor-glow {
@@ -51,6 +54,9 @@ body {
 }
 
 .header {
+    position: fixed; /* Add this if not already there */
+    top: 0;
+    left: 0;
     width: 100%;
     padding: 20px 10%;
     box-shadow: 0px 0px 10px var(--glow-color);
@@ -60,6 +66,7 @@ body {
     align-items: center;
     gap: 20px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000; /* Ensures header stays on top */
 }
 
 .logo {
@@ -116,24 +123,28 @@ body {
     text-shadow: 0px 0px 10px var(--glow-color);
 }
 
-.home{
+.home {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 100vh;
+    justify-content: center; /* Changed from space-between */
+    column-gap: 40px; /* Add gap between content and image */
+    min-height: 100vh;
     width: 100%;
-    padding: 0 10%;
+    padding: 110px 10% 50px 10%;
 }
 
 .hero {
-    height: 400px;
-    width: 400px;
+    aspect-ratio: 1 / 1; /* This ensures it stays a perfect circle */
+    width: min(400px, 40vw);
+    max-width: 400px;
+    min-width: 200px;
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0; /* Prevents the circle from being squished */
 }
 
 .hero:hover {
@@ -253,14 +264,157 @@ body {
 }
 
 .about, .skills, .awards, .projects, .contact {
-    padding: 80px 10%;
+    padding: 120px 10%;
     min-height: 100vh;
 }
+
+
 
 .about h1, .skills h1, .awards h1, .projects h1, .contact h1 {
     font-size: 48px;
     margin-bottom: 20px;
     color: var(--primary-color);
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.about-content {
+    display: flex;
+    column-gap: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.about-img {
+    aspect-ratio: 1 / 1; /* This ensures it stays a perfect circle */
+    width: min(300px, 20vw);
+    max-width: 300px;
+    min-width: 100px;
+    border-radius: 10%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Prevents the circle from being squished */
+}
+
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.about h1 {
+    text-align: center;
+}
+
+.about>h3 {
+    font-size: 38px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.about-text p {
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 0;
+}
+
+.school {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.school-box {
+    display: flex;
+    column-gap: 20px;
+}
+
+.box {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.box:hover {
+    box-shadow: 0px 0px 10px var(--glow-color);
+    transition: box-shadow 0.3s ease;
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.hobbies {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.hobby-item {
+    width: 60%;
+    height: 125px;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    transition: width 0.3s ease;
+    border-radius: 8px;
+    position: relative;
+}
+
+.hobby-item img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.hobby-item:hover {
+    width: 100%;
+}
+
+.hobby-item:hover img {
+    filter: grayscale(0%);
+    
+}
+
+.label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.hobby-item:hover .label {
+    opacity: 1;
+    text-shadow: 0px 0px 10px var(--glow-color);
+    transition: text-shadow 0.3s ease;
 }
 
 .highlight {
@@ -300,16 +454,28 @@ body {
 }
 
 @media (max-width: 769px){
+    body {
+        padding-top: 40px;
+    }
     .navbar {
-        display:none;
+        display: flex;
         flex-direction: column;
-        position: absolute;
-        top: 60px;
+        position: fixed;
+        top: 70px;
+        right: -100%; /* Start off-screen */
         background-color: var(--bg-color);
         width: 100%;
+        height: calc(100vh - 80px);
         text-align: center;
-        left: 0;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        padding: 20px 0;
     }
+    
+    .navbar-active .navbar {
+        right: 0; /* Slide in */
+    }
+    
     .theme-toggle {
         margin-left: 0;
         order: 2;
@@ -323,33 +489,32 @@ body {
     }
     .navbar-active .navbar {
         display: flex;
+        
     }
 
-    .home {
+   .home {
         flex-direction: column-reverse;
         align-items: center;
         justify-content: center;
-        row-gap: 20px;
-        padding: 20px;
+        gap: 30px;
+        padding: 140px 20px 40px 20px;
     }
 
     .hero {
-        height: 150px;
-        width: 150px;
+        width: min(300px, 50vw); /* Larger on tablets */
     }
 
     .home-content {
         text-align: center;
-        display: flex;
-        justify-content: center;
+        align-items: center;
     }
 
     .home-content h1 {
-        font-size: 46px;
+        font-size: 40px;
     }
 
     .home-content span {
-        font-size: 24px; /* Smaller font for mobile */
+        font-size: 24px;
     }
 
     .home-content p {
@@ -364,17 +529,49 @@ body {
     .home-sci {
         justify-content: center;
     }
-    
+
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+    }
+
+    .about-img {
+        width: min(250px, 30vw);
+    }
+
+    .about, .skills, .awards, .projects, .contact {
+        padding: 100px 5%;
+    }
+
+    .about h1, .skills h1, .awards h1, .projects h1, .contact h1 {
+        font-size: 36px;
+    }
+
+    .about>h3 {
+        font-size: 36px;
+    }
+
+    .hobbies {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hobby-item {
+        width: 80%;
+    }
+
+    .hobby-item:hover {
+        width: 90%;
+    }
 }
 
 @media (max-width: 426px){
-    .home {
-        padding: 30px;
+    .navbar {
+        top: 65px;
     }
-
-    .hero {
-        height: 125px;
-        width: 125px;
+    .home {
+        padding: 120px 30px 30px 30px;
     }
 
     .home-content h1 {
@@ -399,10 +596,14 @@ body {
 
     .btn-box a {
         width: 100%;
+        font-size: 17px;
+        height: 50px;
     }
 
     .home-sci {
         justify-content: center;
+        padding: 20px 0;
+        column-gap: 25px;
 
     }
 
@@ -410,5 +611,158 @@ body {
         height: 40px;
         width: 40px;
         font-size: 30px;
+    }
+
+    .about-content {
+        padding: 5px;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 15px;
+    }
+
+    .about-img {
+        width: min(200px, 40vw);
+    }
+
+    .about, .skills, .awards, .projects, .contact {
+        padding: 80px 5%;
+    }
+
+    .about h1, .skills h1, .awards h1, .projects h1, .contact h1 {
+        font-size: 28px;
+    }
+
+    .about-text p {
+        font-size: 14px;
+    }
+
+    .about>h3 {
+        font-size: 28px;
+    }
+
+    .hobbies {
+        gap: 10px;
+    }
+
+    .hobby-item {
+        width: 90%;
+        height: 100px;
+    }
+
+    .hobby-item:hover {
+        width: 95%;
+    }
+
+    .label {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 375px){
+    .navbar {
+        top: 55px;
+    }
+    .header {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .theme-toggle {
+        font-size: 24px;
+    }
+
+    .burger div {
+        width: 20px;
+    }
+
+    .home {
+        padding: 100px 30px 30px 30px;
+        row-gap: 15px;
+    }
+
+    .hero {
+        min-height: 150px;
+        min-width: 150px;
+    }
+
+    .home-content h1 {
+        font-size: 28px;
+    }
+
+    .home-content span {
+        font-size: 18px;
+    }
+
+    .home-content p {
+        font-size: 11px;
+        margin: 15px 0 25px;
+    }
+
+    .home-content .btn-box {
+        row-gap: 8px;
+    }
+
+    .btn-box a {
+        font-size: 16px;
+        height: 45px;
+    }
+
+    .home-sci {
+        padding: 15px 0;
+        column-gap: 20px;
+    }
+
+    .home-sci a {
+        height: 35px;
+        width: 35px;
+        font-size: 24px;
+    }
+
+    .about-content {
+        padding: 5px;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 10px;
+    }
+
+    .about-img {
+        width: min(180px, 45vw);
+    }
+
+    .about, .skills, .awards, .projects, .contact {
+        padding: 40px 3%;
+    }
+
+    .about h1, .skills h1, .awards h1, .projects h1, .contact h1 {
+        font-size: 24px;
+    }
+
+    .about-text p {
+        font-size: 12px;
+    }
+
+    .hobby-item {
+        width: 95%;
+        height: 90px;
+    }
+
+    .hobby-item:hover {
+        width: 98%;
+    }
+
+    .label {
+        font-size: 16px;
+    }
+
+    .school h3 {
+        font-size: 16px;
+    }
+
+    .box {
+        width: 50px;
+        height: 50px;
     }
 }
