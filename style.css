@@ -10,6 +10,7 @@ html, body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Ensure all elements respect container boundaries */
@@ -1475,6 +1476,10 @@ body {
 
     .social-link span {
         font-size: 0.9rem;
+    }
+
+    .cursor-glow {
+        display: none;
     }
 }
 
