@@ -16,7 +16,18 @@
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'light') {
         document.documentElement.classList.add('light-mode');
+      } else {
+        
+        document.documentElement.classList.remove('light-mode');
+        if (!savedTheme) {
+          localStorage.setItem('theme', 'dark');
+        }
       }
+      
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
     </script>
   </head>
    <body>

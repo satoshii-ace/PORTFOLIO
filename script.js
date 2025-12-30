@@ -1,5 +1,3 @@
-
-//cursor
 const cursorGlow = document.querySelector('.cursor-glow');
 const cursorDot = document.querySelector('.cursor-dot')
 document.addEventListener('mousemove', (e) => {
@@ -10,7 +8,6 @@ document.addEventListener('mousemove', (e) => {
   cursorDot.style.top = e.clientY + 'px';
 })
 
-//burger
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.header')
 burger.addEventListener('click', () => {
@@ -26,12 +23,14 @@ navLinks.forEach(link => {
 });
      
       
-//light & dark mode
 const themeToggle = document.getElementById('theme-icon');
 const root = document.documentElement;
 
 
 if (root.classList.contains('light-mode')) {
+  themeToggle.classList.remove('bxs-sun');
+  themeToggle.classList.add('bxs-moon');
+} else {
   themeToggle.classList.remove('bxs-moon');
   themeToggle.classList.add('bxs-sun');
 }
@@ -40,18 +39,17 @@ themeToggle.addEventListener('click', () => {
   root.classList.toggle('light-mode');
   
   if(root.classList.contains('light-mode')) {
-    themeToggle.classList.remove('bxs-moon');
-    themeToggle.classList.add('bxs-sun');
-    localStorage.setItem('theme', 'light');
-  } else {
     themeToggle.classList.remove('bxs-sun');
     themeToggle.classList.add('bxs-moon');
+    localStorage.setItem('theme', 'light');
+  } else {
+    themeToggle.classList.remove('bxs-moon');
+    themeToggle.classList.add('bxs-sun');
     localStorage.setItem('theme', 'dark');
   }
 });
 
 
-//hover hero section
 const heroImg = document.querySelector('.hero img');
 const originalSrc = 'assets/hero1.png';
 const hoverSrc = 'assets/hero2.png';
@@ -77,7 +75,6 @@ document.querySelector('.about-img').addEventListener('mouseleave', () => {
   aboutImg.src = origSrc;
 });
 
-// Contact Form Handling
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
@@ -89,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Show loading state
       submitBtn.disabled = true;
       btnText.style.display = 'none';
       loadingSpinner.style.display = 'block';
@@ -107,21 +103,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (response.ok) {
-          // Success
           formMessage.textContent = 'Thank you! Your message has been sent successfully.';
           formMessage.className = 'form-message success';
           contactForm.reset();
         } else {
-          // Error
           throw new Error('Form submission failed');
         }
       } catch (error) {
-        // Error handling
         formMessage.textContent = 'Oops! There was a problem sending your message. Please try again or contact me directly.';
         formMessage.className = 'form-message error';
         console.error('Form submission error:', error);
       } finally {
-        // Reset button state
         submitBtn.disabled = false;
         btnText.style.display = 'inline';
         loadingSpinner.style.display = 'none';
@@ -130,12 +122,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Back to Top Button
 document.addEventListener('DOMContentLoaded', function() {
   const backToTopBtn = document.getElementById('backToTop');
   
   if (backToTopBtn) {
-    // Show/hide button based on scroll position
     window.addEventListener('scroll', function() {
       if (window.pageYOffset > 300) {
         backToTopBtn.style.opacity = '1';
@@ -146,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Smooth scroll to top
     backToTopBtn.addEventListener('click', function() {
       window.scrollTo({
         top: 0,
