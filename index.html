@@ -52,8 +52,7 @@
     data-aos-mirror="true"
     data-aos-once="false"
     data-aos-anchor-placement="top-center">
-        <h1>Hi, I'm Ashley Clint Torres</h1>
-         <span id="element"></span>
+        <h1>Hi, I'm Ashley Clint Torres, <span id="element"></span></h1>
         <p>
           Welcome to my digital space! I'm Ashley Clint Torres, a tech enthusiast and lifelong learner who thrives on blending creativity with code. From crafting interactive portfolios to exploring the latest in tech and design, I enjoy sharing my journey and connecting with like-minded innovators.
         </p>
@@ -312,13 +311,105 @@
 
     <section class="contact" id="contact">
       <h1>Contact</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-        consectetur dolor earum quibusdam aliquid nesciunt placeat eos nisi sed
-        asperiores veritatis eligendi facilis ipsum, labore soluta magnam.
-        Libero, illo ipsum?
+      <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" data-aos-easing="ease-out-cubic">
+        I'd love to hear from you! Whether you have questions, opportunities, or just want to connect, feel free to reach out.
       </p>
+
+      <div class="contact-container" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
+        <div class="contact-form">
+          <h3>Send me a message</h3>
+          <form id="contactForm" action="https://formspree.io/f/mkonkkqw" method="POST">
+            <div class="form-group">
+              <input type="text" id="name" name="name" required>
+              <label for="name">Your Name</label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" required>
+              <label for="email">Your Email</label>
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" required></textarea>
+              <label for="message">Your Message</label>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span id="btnText">Send Message</span>
+              <div id="loadingSpinner" style="display: none;">
+                <div class="spinner"></div>
+              </div>
+            </button>
+            <div id="formMessage" class="form-message"></div>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <div class="info-item">
+            <h3>Email</h3>
+            <p><a href="mailto:torresashleyclint@gmail.com">torresashleyclint@gmail.com</a></p>
+          </div>
+
+          <div class="info-item">
+            <h3>Follow Me</h3>
+            <div class="social-links">
+              <a href="https://github.com/satoshii-ace" target="_blank" class="social-link github">
+                <i class="bx bxl-github"></i>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.tiktok.com/@satoshiii_30?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link tiktok">
+                <i class="bx bxl-tiktok"></i>
+                <span>TikTok</span>
+              </a>
+              <a href="https://www.facebook.com/ashleyclint.torres" target="_blank" class="social-link facebook">
+                <i class="bx bxl-facebook"></i>
+                <span>Facebook</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>SATOSHI</h3>
+          <p>IT Student passionate about web development, cybersecurity, and automation.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="footer-social">
+            <a href="https://github.com/satoshii-ace" target="_blank" class="social-link">
+              <i class="bx bxl-github"></i>
+            </a>
+            <a href="https://www.tiktok.com/@satoshiii_30?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link">
+              <i class="bx bxl-tiktok"></i>
+            </a>
+            <a href="https://www.facebook.com/ashleyclint.torres" target="_blank" class="social-link">
+              <i class="bx bxl-facebook"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ashley Clint Torres. All rights reserved.</p>
+        <button id="backToTop" class="back-to-top">
+          <i class="bx bx-up-arrow-alt"></i>
+        </button>
+      </div>
+    </footer>
+
     <script src="script.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -326,9 +417,12 @@
       var typed = new Typed('#element', {
         strings: ['An IT Student', 'A Son', 'A MLBB Amateur Player', 'A Developer', 'A Friend'],
         typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 1000,
         loop: true,
-        backSpeed: 30,  
-        backDelay: 1000  
+        showCursor: true,
+        cursorChar: '|',
+        smartBackspace: true
       });
       AOS.init();
   </script>
