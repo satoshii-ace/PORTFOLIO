@@ -49,6 +49,17 @@ body {
     margin: 0 auto;
 }
 
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 .cursor-glow {
     position: fixed;
     width: 60px;
@@ -481,6 +492,59 @@ body {
     justify-content: center;
     gap: 15px;
     margin: 20px 0;
+}
+
+.skill-tile {
+    position: relative; 
+    
+}
+
+.skill-tile::after {
+    content: attr(data-level);
+    
+    
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 32px;
+    height: 32px;
+    
+    
+    background: radial-gradient(closest-side, #1f2d3a 75%, transparent 80%), 
+                conic-gradient(var(--primary-color) calc(var(--level) * 100% / 15), #4a5568 0);
+    
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50%;
+    border: 2px solid #1f2d3a;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+    
+    transform: scale(0); 
+    opacity: 0;
+    
+    
+    transition: all 0.4s cubic-bezier(1.75, 0.885, 0.32, 1.275);
+}
+
+.skill-tile[data-level="15"]::after {
+    
+    background: radial-gradient(closest-side, #1f2d3a 75%, transparent 80%),
+                conic-gradient(#FFD700 calc(var(--level) * 100% / 15), #4a5568 0);
+    color: #FFD700;
+    box-shadow: 0 0 15px #FFD700;
+}
+
+
+.skill-tile:hover::after {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .tech-stack img {
@@ -1900,3 +1964,4 @@ body {
         padding: 40px 15px 20px;
     }
 }
+
