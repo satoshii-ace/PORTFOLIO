@@ -34,6 +34,7 @@
     <div id="particles-js"></div>
     <div class="cursor-glow"></div>
     <div class="cursor-dot"></div>
+    <script src="https://www.dante-ai.com/embed.js" data-agent-id="63ab61fd-439d-41e1-a0fe-a02a9d8a1c91" data-widget-key="wk_p6RDyTDglXOkMqn-N0tPqAxFN9bHj_0l" crossorigin="anonymous" async></script>
     
     <header class="header">
       <a href="#" class="logo">SATOSHI</a>
@@ -57,7 +58,7 @@
     </header>
     
     <section class="home" id="home">
-      <div class="home-content" 
+      <div class="terminal-window win-terminal"
     data-aos="fade-down"
     data-aos-delay="100"
     data-aos-duration="1200"
@@ -65,29 +66,65 @@
     data-aos-mirror="true"
     data-aos-once="false"
     data-aos-anchor-placement="top-center">
-        <h1>Hi, I'm Ashley Clint Torres, <span id="element"></span></h1>
-        <p>
-          Welcome to my digital space! I'm Ashley Clint Torres, a tech enthusiast and lifelong learner who thrives on blending creativity with code. From crafting interactive portfolios to exploring the latest in tech and design, I enjoy sharing my journey and connecting with like-minded innovators.
-        </p>
-        <div class="btn-box">
-          <a href="#about">Learn more</a>
-          <a href="#contact">Let's talk</a>
-        </div>
-         <div class="home-sci">
-        <a href="https://www.facebook.com/ashleyclint.torres" target="_blank"><i class="bx bxl-facebook-circle"></i></a>
-        <a href="https://www.instagram.com/satoshii_ace" target="_blank"><i class="bx bxl-instagram"></i></a>
-        <a href="https://github.com/satoshii-ace" target="_blank"><i class="bx bxl-github"></i></a>
-      </div>
-      </div>
 
-      <div class="hero" 
-    data-aos="fade-down"
-    data-aos-delay="300"
-    data-aos-duration="1200"
-    data-aos-easing="ease-out-cubic"
-    data-aos-mirror="true"
-    data-aos-once="false"
-    data-aos-anchor-placement="top-center"><img src="assets/hero1.png" alt="hero"></div>
+        <div class="win-titlebar">
+          <div class="win-titlebar-left">
+            <i class='bx bx-terminal win-app-icon'></i>
+            <span class="win-title-text">Windows PowerShell</span>
+          </div>
+          <div class="win-controls">
+            <button class="win-btn win-min" aria-label="Minimize" tabindex="-1"><span class="ico-min"></span></button>
+            <button class="win-btn win-max" aria-label="Maximize" tabindex="-1"><span class="ico-max"></span></button>
+            <button class="win-btn win-close" aria-label="Close" tabindex="-1"><span class="ico-close"></span></button>
+          </div>
+        </div>
+
+        <div class="win-tabs">
+          <div class="win-tab active">
+            <i class='bx bx-terminal'></i>
+            <span>ashley@portfolio</span>
+            <i class='bx bx-x win-tab-close'></i>
+          </div>
+          <div class="win-tab-add">+</div>
+        </div>
+
+        <div class="terminal-body" id="terminalBody">
+          <div class="terminal-log" id="terminalLog"></div>
+
+          <div class="term-block hidden" id="blockWhoami">
+            <span class="term-output">ashley-clint-torres</span>
+          </div>
+
+          <div class="term-block hidden" id="blockIntro">
+            <h1>Hi, I'm Ashley Clint Torres, <span id="element"></span></h1>
+            <p>
+              Welcome to my digital space! I'm Ashley Clint Torres, a tech enthusiast and lifelong learner who thrives on blending creativity with code. From crafting interactive portfolios to exploring the latest in tech and design, I enjoy sharing my journey and connecting with like-minded innovators.
+            </p>
+          </div>
+
+          <div class="term-block hidden" id="blockActions">
+            <div class="btn-box term-links">
+              <a href="#about">learn_more.sh</a>
+              <a href="#contact">lets_talk.sh</a>
+            </div>
+          </div>
+
+          <div class="term-block hidden" id="blockSocials">
+            <div class="home-sci">
+              <a href="https://www.facebook.com/ashleyclint.torres" target="_blank"><i class="bx bxl-facebook-circle"></i></a>
+              <a href="https://www.instagram.com/satoshii_ace" target="_blank"><i class="bx bxl-instagram"></i></a>
+              <a href="https://github.com/satoshii-ace" target="_blank"><i class="bx bxl-github"></i></a>
+            </div>
+          </div>
+
+          <div class="term-block hidden" id="blockAscii">
+            <span class="term-output">Rendering visual profile...</span>
+            <pre class="ascii-art" id="asciiArt" aria-label="ASCII portrait of Ashley Clint Torres"></pre>
+          </div>
+
+          <span class="terminal-cursor" id="terminalCursor">&#9608;</span>
+        </div>
+      </div>
     </section>
 
     <section class="about" id="about">
@@ -96,7 +133,7 @@
         <div class="about-img" data-aos="fade-up"><img src="assets/about.png" alt="about image"></div>
         <div class="about-text" data-aos="fade-up">
         <p>
-          Hello! I'm a 19-year-old second-year BSIT student at Eastern Visayas State University, residing in Brgy. Margen, Ormoc City, Leyte, Philippines.
+          Hello! I'm a 20-year-old second-year BSIT student at Eastern Visayas State University, residing in Brgy. Margen, Ormoc City, Leyte, Philippines.
         </p>
         <p>
           My educational journey began at Margen National High School, where I completed my junior high, and continued at ACLC College of Ormoc in the TVL Programming strand for senior high.
@@ -439,16 +476,20 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script>
-      var typed = new Typed('#element', {
-        strings: ['An IT Student', 'A Son', 'A MLBB Amateur Player', 'A Developer', 'A Friend'],
-        typeSpeed: 50,
-        backSpeed: 30,
-        backDelay: 1000,
-        loop: true,
-        showCursor: true,
-        cursorChar: '|',
-        smartBackspace: true
-      });
+      window.startRoleTyping = function() {
+        if (window.__typedRoleStarted) return;
+        window.__typedRoleStarted = true;
+        new Typed('#element', {
+          strings: ['An IT Student', 'A Son', 'A MLBB Amateur Player', 'A Developer', 'A Friend'],
+          typeSpeed: 50,
+          backSpeed: 30,
+          backDelay: 1000,
+          loop: true,
+          showCursor: true,
+          cursorChar: '|',
+          smartBackspace: true
+        });
+      };
       AOS.init({
         duration: 1000,
         easing: 'ease-out-cubic',
