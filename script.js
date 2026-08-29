@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
+    // Check if particles container exists
     if(document.getElementById('particles-js')) {
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#379634" }, 
+                "color": { "value": "#379634" }, /* Your Primary Color */
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.5, "random": false },
                 "size": { "value": 3, "random": true },
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 "move": {
                     "enable": true,
-                    "speed": 4, 
+                    "speed": 4, /* Speed of movement */
                     "direction": "none",
                     "random": false,
                     "straight": false,
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             "interactivity": {
                 "detect_on": "canvas",
                 "events": {
-                    "onhover": { "enable": true, "mode": "grab" }, 
+                    "onhover": { "enable": true, "mode": "grab" }, /* Mouse grab effect */
                     "onclick": { "enable": true, "mode": "push" },
                     "resize": true
                 },
@@ -42,15 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-const cursorGlow = document.querySelector('.cursor-glow');
-const cursorDot = document.querySelector('.cursor-dot')
-document.addEventListener('mousemove', (e) => {
-  cursorGlow.style.left = e.clientX + 'px';
-  cursorGlow.style.top = e.clientY + 'px';
-  
-  cursorDot.style.left = e.clientX + 'px';
-  cursorDot.style.top = e.clientY + 'px';
-})
 
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.header')
@@ -70,6 +61,27 @@ navLinks.forEach(link => {
 const themeToggle = document.getElementById('theme-icon');
 const root = document.documentElement;
 
+function calculateAge(birthDateString) {
+  const birthDate = new Date(birthDateString);
+  const today = new Date();
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const hasBirthdayPassedThisYear =
+    today.getMonth() > birthDate.getMonth() ||
+    (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+
+  if (!hasBirthdayPassedThisYear) {
+    age--;
+  }
+
+  return age;
+}
+
+const ageElement = document.getElementById('user-age');
+if (ageElement) {
+  const birthDate = '2006-04-30';
+  ageElement.textContent = calculateAge(birthDate);
+}
 
 if (root.classList.contains('light-mode')) {
   themeToggle.classList.remove('bxs-sun');
@@ -94,7 +106,7 @@ themeToggle.addEventListener('click', () => {
 });
 
 
-
+/* ---------- Terminal hero: ASCII art + typing animation ---------- */
 const ASCII_PROFILE_DEFAULT = `                       :........
                      :..  ...   ..
                      :..=+++++=- .
@@ -185,13 +197,14 @@ const ASCII_PROFILE_ALT = `                          ::
 
   if (!terminalWindow || !logEl || !asciiEl || !bodyEl) return;
 
-  
+  // Each step types a command in the running log, then reveals the
+  // matching content block (already in the DOM, just hidden) below it.
   const SCRIPT = [
     { command: 'whoami', blockId: 'blockWhoami' },
-    { command: 'cat intro.txt', blockId: 'blockIntro', onReveal: () => window.startRoleTyping && window.startRoleTyping() },
-    { command: 'ls actions/', blockId: 'blockActions' },
-    { command: 'ls socials/', blockId: 'blockSocials' },
-    { command: './render_profile.sh', blockId: 'blockAscii', ascii: true }
+    { command: 'type intro.txt', blockId: 'blockIntro', onReveal: () => window.startRoleTyping && window.startRoleTyping() },
+    { command: 'dir actions', blockId: 'blockActions' },
+    { command: 'dir socials', blockId: 'blockSocials' },
+    { command: 'render_profile.bat', blockId: 'blockAscii', ascii: true }
   ];
 
   const TYPE_SPEED = 42;
@@ -204,7 +217,7 @@ const ASCII_PROFILE_ALT = `                          ::
     line.className = 'term-line';
     const prompt = document.createElement('span');
     prompt.className = 'prompt';
-    prompt.textContent = 'guest@ashley-portfolio:~$ ';
+    prompt.textContent = 'C:\\Users\\ashley>';
     line.appendChild(prompt);
     const typed = document.createElement('span');
     typed.className = 'cmd-text';
@@ -274,7 +287,7 @@ const ASCII_PROFILE_ALT = `                          ::
         await revealAscii(ASCII_PROFILE_DEFAULT);
       }
       if (step.onReveal) {
-        try { step.onReveal(); } catch (err) {  }
+        try { step.onReveal(); } catch (err) { /* non-fatal, e.g. Typed.js not yet loaded */ }
       }
 
       scrollToBottom();
@@ -314,7 +327,7 @@ const ASCII_PROFILE_ALT = `                          ::
     showingAlt = false;
   });
 
- 
+  // Window control buttons: playful, non-destructive interactions.
   const minBtn = document.querySelector('.win-min');
   const maxBtn = document.querySelector('.win-max');
   const closeBtn = document.querySelector('.win-close');
