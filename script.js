@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if particles container exists
     if(document.getElementById('particles-js')) {
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#379634" }, /* Your Primary Color */
+                "color": { "value": "#379634" }, 
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.5, "random": false },
                 "size": { "value": 3, "random": true },
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 "move": {
                     "enable": true,
-                    "speed": 4, /* Speed of movement */
+                    "speed": 4, 
                     "direction": "none",
                     "random": false,
                     "straight": false,
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             "interactivity": {
                 "detect_on": "canvas",
                 "events": {
-                    "onhover": { "enable": true, "mode": "grab" }, /* Mouse grab effect */
+                    "onhover": { "enable": true, "mode": "grab" },
                     "onclick": { "enable": true, "mode": "push" },
                     "resize": true
                 },
@@ -42,6 +41,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+const cursorGlow = document.querySelector('.cursor-glow');
+
+if (cursorGlow) {
+  let mouseX = 0;
+  let mouseY = 0;
+  let glowX = 0;
+  let glowY = 0;
+
+  window.addEventListener('pointermove', (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+  });
+
+  function animateCursorGlow() {
+    glowX += (mouseX - glowX) * 0.16;
+    glowY += (mouseY - glowY) * 0.16;
+
+    cursorGlow.style.left = `${glowX}px`;
+    cursorGlow.style.top = `${glowY}px`;
+    requestAnimationFrame(animateCursorGlow);
+  }
+
+  requestAnimationFrame(animateCursorGlow);
+
+  window.addEventListener('pointerleave', () => {
+    cursorGlow.style.opacity = '0';
+  });
+
+  window.addEventListener('pointerenter', () => {
+    cursorGlow.style.opacity = '1.5';
+  });
+}
 
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.header')
@@ -60,6 +92,46 @@ navLinks.forEach(link => {
       
 const themeToggle = document.getElementById('theme-icon');
 const root = document.documentElement;
+
+function initTypingTitles() {
+  const titles = document.querySelectorAll('.typing-title');
+
+  titles.forEach((title, index) => {
+    const text = title.dataset.text || title.textContent.trim();
+    title.textContent = '';
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const type = () => {
+      if (!isDeleting) {
+        charIndex += 1;
+      } else {
+        charIndex -= 1;
+      }
+
+      title.textContent = text.slice(0, charIndex);
+
+      if (!isDeleting && charIndex === text.length) {
+        setTimeout(() => {
+          isDeleting = true;
+          type();
+        }, 1200 + (index * 150));
+        return;
+      }
+
+      if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        setTimeout(type, 250);
+        return;
+      }
+
+      const speed = isDeleting ? 45 : 110;
+      setTimeout(type, speed);
+    };
+
+    setTimeout(type, 200 * index);
+  });
+}
 
 function calculateAge(birthDateString) {
   const birthDate = new Date(birthDateString);
@@ -82,6 +154,8 @@ if (ageElement) {
   const birthDate = '2006-04-30';
   ageElement.textContent = calculateAge(birthDate);
 }
+
+initTypingTitles();
 
 if (root.classList.contains('light-mode')) {
   themeToggle.classList.remove('bxs-sun');
@@ -106,7 +180,7 @@ themeToggle.addEventListener('click', () => {
 });
 
 
-/* ---------- Terminal hero: ASCII art + typing animation ---------- */
+
 const ASCII_PROFILE_DEFAULT = `                       :........
                      :..  ...   ..
                      :..=+++++=- .
@@ -197,8 +271,7 @@ const ASCII_PROFILE_ALT = `                          ::
 
   if (!terminalWindow || !logEl || !asciiEl || !bodyEl) return;
 
-  // Each step types a command in the running log, then reveals the
-  // matching content block (already in the DOM, just hidden) below it.
+  
   const SCRIPT = [
     { command: 'whoami', blockId: 'blockWhoami' },
     { command: 'type intro.txt', blockId: 'blockIntro', onReveal: () => window.startRoleTyping && window.startRoleTyping() },
@@ -287,7 +360,7 @@ const ASCII_PROFILE_ALT = `                          ::
         await revealAscii(ASCII_PROFILE_DEFAULT);
       }
       if (step.onReveal) {
-        try { step.onReveal(); } catch (err) { /* non-fatal, e.g. Typed.js not yet loaded */ }
+        try { step.onReveal(); } catch (err) {  }
       }
 
       scrollToBottom();
@@ -327,7 +400,7 @@ const ASCII_PROFILE_ALT = `                          ::
     showingAlt = false;
   });
 
-  // Window control buttons: playful, non-destructive interactions.
+  
   const minBtn = document.querySelector('.win-min');
   const maxBtn = document.querySelector('.win-max');
   const closeBtn = document.querySelector('.win-close');
@@ -358,6 +431,21 @@ document.querySelector('.about-img').addEventListener('mouseleave', () => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+  const progressBar = document.getElementById('scrollProgressBar');
+
+  function updateScrollProgress() {
+    if (!progressBar) return;
+
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
+    const clamped = Math.min(Math.max(progress, 0), 1);
+    progressBar.style.transform = `scaleX(${clamped})`;
+  }
+
+  updateScrollProgress();
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
   const contactForm = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
   const btnText = document.getElementById('btnText');

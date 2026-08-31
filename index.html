@@ -31,7 +31,13 @@
     </script>
   </head>
    <body>
+    <div class="cursor-glow" aria-hidden="true"></div>
     <div id="particles-js"></div>
+    <div class="scroll-progress-container" aria-hidden="true">
+      <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+    <script src="https://www.dante-ai.com/embed.js" data-agent-id="63ab61fd-439d-41e1-a0fe-a02a9d8a1c91" data-widget-key="wk_p6RDyTDglXOkMqn-N0tPqAxFN9bHj_0l" crossorigin="anonymous" async></script>
+    
     
     <header class="header">
       <a href="#" class="logo">SATOSHI</a>
@@ -125,7 +131,7 @@
     </section>
 
     <section class="about" id="about">
-      <h1 data-aos="fade-up">My Story</h1>
+      <h1 class="typing-title" data-text="My Story" data-aos="fade-up"></h1>
       <div class="about-content">
         <div class="about-img" data-aos="fade-up"><img src="assets/about.png" alt="about image"></div>
         <div class="about-text" data-aos="fade-up">
@@ -159,7 +165,9 @@
     </section>
     
     <section class="skills" id="skills">
-      <h1>Skills</h1>
+      <div class="section-heading">
+        <h1 class="typing-title" data-text="Skills"></h1>
+      </div>
       <h3>Abilities</h3>
       <ul class="abilities-list" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
         <li>Collaborative</li>
@@ -260,58 +268,109 @@
     </section>
     
     <section class="awards" id="awards">
-      <h1>Awards</h1>
+      <div class="section-heading">
+        <h1 class="typing-title" data-text="Awards"></h1>
+      </div>
       <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" data-aos-easing="ease-out-cubic">
         Throughout my academic and extracurricular journey, I've been honored to receive several awards that reflect my dedication to excellence in gaming, academics, and community service.
       </p>
-      <div class="awards-slider" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
-        <div class="award-card">
-          <img src="assets/intrams.jpg" alt="Intrams MLBB Champion">
-          <h3>Intrams MLBB Champion</h3>
-          <p>Representing House Giallio in ACLC</p>
-          <span class="date">Date: November 11, 2023</span>
+      <div class="marquee-shell" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
+        <div class="marquee-track marquee-track-1">
+          <div class="award-card">
+            <img src="assets/intrams.jpg" alt="Intrams MLBB Champion">
+            <h3>Intrams MLBB Champion</h3>
+            <p>Representing House Giallio in ACLC</p>
+            <span class="date">Date: November 11, 2023</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/tecno.jpg" alt="Tecnocrats Day MLBB Tournament Champion">
+            <h3>Tecnocrats Day MLBB Tournament Champion</h3>
+            <p>IT Department Champion in ACLC</p>
+            <span class="date">Date: January 31, 2024</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/3rd.jpg" alt="3rd Place Barangayan Cluster Match">
+            <h3>3rd Place in Barangayan Cluster Match</h3>
+            <p>MLBB Tournament Achievement</p>
+            <span class="date">Date: April 14, 2024</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/top.jpg" alt="Constitutional Award Rank 10">
+            <h3>Constitutional Award - Rank 10</h3>
+            <p>Class 2023-2024, ACLC College of Ormoc</p>
+            <span class="date">Date: June 9, 2024</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/ojt.jpg" alt="Best in OJT Award">
+            <h3>Best in OJT Award</h3>
+            <p>From Cityhall of Ormoc</p>
+            <span class="date">Date: June 9, 2024</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/debate.jpg" alt="Best Speaker and Debating Team">
+            <h3>Best Speaker & Best Debating Team</h3>
+            <p>During debate competition at EVSU</p>
+            <span class="date">Date: May 5, 2025</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/progchamp.jpg" alt="C Programming Champion">
+            <h3>C Programming Champion</h3>
+            <p>During IT Days at EVSU Ormoc</p>
+            <span class="date">Date: March 29, 2025</span>
+          </div>
         </div>
-        <div class="award-card">
-          <img src="assets/tecno.jpg" alt="Tecnocrats Day MLBB Tournament Champion">
-          <h3>Tecnocrats Day MLBB Tournament Champion</h3>
-          <p>IT Department Champion in ACLC</p>
-          <span class="date">Date: January 31, 2024</span>
-        </div>
-        <div class="award-card">
-          <img src="assets/3rd.jpg" alt="3rd Place Barangayan Cluster Match">
-          <h3>3rd Place in Barangayan Cluster Match</h3>
-          <p>MLBB Tournament Achievement</p>
-          <span class="date">Date: April 14, 2024</span>
-        </div>
-        <div class="award-card">
-          <img src="assets/top.jpg" alt="Constitutional Award Rank 10">
-          <h3>Constitutional Award - Rank 10</h3>
-          <p>Class 2023-2024, ACLC College of Ormoc</p>
-          <span class="date">Date: June 9, 2024</span>
-        </div>
-        <div class="award-card">
-          <img src="assets/ojt.jpg" alt="Best in OJT Award">
-          <h3>Best in OJT Award</h3>
-          <p>From Cityhall of Ormoc</p>
-          <span class="date">Date: June 9, 2024</span>
-        </div>
-        <div class="award-card">
-          <img src="assets/debate.jpg" alt="Best Speaker and Debating Team">
-          <h3>Best Speaker & Best Debating Team</h3>
-          <p>During debate competition at EVSU</p>
-          <span class="date">Date: May 5, 2025</span>
-        </div>
-        <div class="award-card">
-          <img src="assets/progchamp.jpg" alt="C Programming Champion">
-          <h3>C Programming Champion</h3>
-          <p>During IT Days at EVSU Ormoc</p>
-          <span class="date">Date: March 29, 2025</span>
+
+        <div class="marquee-track marquee-track-2">
+          <div class="award-card">
+            <img src="assets/intrams.jpg" alt="Intrams MLBB Champion">
+            <h3>Intrams MLBB Champion</h3>
+            <p>Representing House Giallio in ACLC</p>
+            <span class="date">Date: November 11, 2023</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/tecno.jpg" alt="Tecnocrats Day MLBB Tournament Champion">
+            <h3>Tecnocrats Day MLBB Tournament Champion</h3>
+            <p>IT Department Champion in ACLC</p>
+            <span class="date">Date: January 31, 2024</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/3rd.jpg" alt="3rd Place Barangayan Cluster Match">
+            <h3>3rd Place in Barangayan Cluster Match</h3>
+            <p>MLBB Tournament Achievement</p>
+            <span class="date">Date: April 14, 2024</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/top.jpg" alt="Constitutional Award Rank 10">
+            <h3>Constitutional Award - Rank 10</h3>
+            <p>Class 2023-2024, ACLC College of Ormoc</p>
+            <span class="date">Date: June 9, 2024</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/ojt.jpg" alt="Best in OJT Award">
+            <h3>Best in OJT Award</h3>
+            <p>From Cityhall of Ormoc</p>
+            <span class="date">Date: June 9, 2024</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/debate.jpg" alt="Best Speaker and Debating Team">
+            <h3>Best Speaker & Best Debating Team</h3>
+            <p>During debate competition at EVSU</p>
+            <span class="date">Date: May 5, 2025</span>
+          </div>
+          <div class="award-card">
+            <img src="assets/progchamp.jpg" alt="C Programming Champion">
+            <h3>C Programming Champion</h3>
+            <p>During IT Days at EVSU Ormoc</p>
+            <span class="date">Date: March 29, 2025</span>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="projects" id="projects">
-      <h1>Projects</h1>
+      <div class="section-heading">
+        <h1 class="typing-title" data-text="Projects"></h1>
+      </div>
       <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" data-aos-easing="ease-out-cubic">
         Here are some of the projects I've worked on during my 1st years in college, showcasing my skills in programming, design, and problem-solving across different technologies and domains.
       </p>
@@ -367,7 +426,9 @@
     </section>
 
     <section class="contact" id="contact">
-      <h1>Contact</h1>
+      <div class="section-heading">
+        <h1 class="typing-title" data-text="Contact"></h1>
+      </div>
       <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" data-aos-easing="ease-out-cubic">
         I'd love to hear from you! Whether you have questions, opportunities, or just want to connect, feel free to reach out.
       </p>

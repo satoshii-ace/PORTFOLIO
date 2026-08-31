@@ -28,6 +28,9 @@ html, body {
     --term-header-bg: #161b22;
     --term-text: #c9d1d9;
     --term-border: rgba(55, 150, 52, 0.4);
+    --award-card-bg: rgba(41, 49, 50, 0.72);
+    --award-card-border: rgba(55, 150, 52, 0.2);
+    --marquee-fade-end: rgba(41, 49, 50, 0);
 
    
     --neu-dark: rgba(10, 13, 14, 0.55);
@@ -57,6 +60,9 @@ html, body {
     --term-header-bg: #ececea;
     --term-text: #24292f;
     --term-border: rgba(55, 150, 52, 0.35);
+    --award-card-bg: rgba(255, 255, 255, 0.75);
+    --award-card-border: rgba(55, 150, 52, 0.32);
+    --marquee-fade-end: rgba(247, 249, 247, 0);
 
     --neu-dark: rgba(163, 177, 180, 0.55);
     --neu-light: rgba(255, 255, 255, 0.9);
@@ -65,6 +71,24 @@ html, body {
 }
 
 
+
+.cursor-glow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(122, 230, 109, 0.18);
+    box-shadow: 0 0 12px rgba(122, 230, 109, 0.22), 0 0 28px rgba(122, 230, 109, 0.18), 0 0 52px rgba(122, 230, 109, 0.12);
+    pointer-events: none;
+    z-index: 2147483647;
+    transform: translate(-50%, -50%);
+    opacity: 1.5;
+    transition: opacity 0.2s ease, transform 0.12s ease-out, background 0.2s ease;
+    mix-blend-mode: screen;
+}
 
 body {
     background-color: var(--bg-color);
@@ -90,20 +114,43 @@ body {
     pointer-events: none;
 }
 
+.scroll-progress-container {
+    position: fixed;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    z-index: 1000;
+    overflow: hidden;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 100%;
+    transform-origin: left center;
+    transform: scaleX(0);
+    background: linear-gradient(90deg, var(--primary-color), #7ae66d, var(--primary-color));
+    box-shadow: none;
+    transition: transform 0.12s ease-out;
+}
+
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 20px 10%;
-    box-shadow: var(--neu-flat);
+    box-shadow: none;
     background-color: var(--bg-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .logo {
@@ -565,6 +612,40 @@ body {
     text-shadow: 0 0 12px rgba(55, 150, 52, 0.7), 2px 2px 0 rgba(0, 0, 0, 0.35);
 }
 
+.section-heading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.typing-title {
+    display: inline-block;
+    min-height: 1.4em;
+    white-space: nowrap;
+    position: relative;
+    text-align: center;
+}
+
+.typing-title::after {
+    content: "";
+    display: inline-block;
+    width: 0.12em;
+    height: 0.95em;
+    background: var(--primary-color);
+    margin-left: 0.08em;
+    vertical-align: middle;
+    animation: typing-cursor 0.7s steps(1) infinite;
+    box-shadow: 0 0 10px rgba(55, 150, 52, 0.7);
+}
+
+@keyframes typing-cursor {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
 .about {
     display: flex;
     flex-direction: column;
@@ -898,53 +979,85 @@ body {
     overflow-x: hidden;
 }
 
-.awards-slider {
+.marquee-shell {
+    position: relative;
     display: flex;
+    flex-direction: column;
+    gap: 22px;
+    overflow: hidden;
+    padding: 12px 8px 20px;
+    user-select: none;
+}
+
+.marquee-shell::before,
+.marquee-shell::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 5%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marquee-shell::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg-color) 0%, var(--marquee-fade-end) 100%);
+}
+
+.marquee-shell::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg-color) 0%, var(--marquee-fade-end) 100%);
+}
+
+.marquee-track {
+    display: flex;
+    align-items: stretch;
+    width: max-content;
     gap: 20px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    padding: 20px 0;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) transparent;
-    max-width: 100%;
-    width: 100%;
+    animation: marquee-scroll 24s linear infinite;
+    will-change: transform;
+    transition: animation-duration 0.45s ease, filter 0.3s ease, transform 0.3s ease;
 }
 
-.awards-slider::-webkit-scrollbar {
-    height: 8px;
+.marquee-track-2 {
+    animation-direction: reverse;
 }
 
-.awards-slider::-webkit-scrollbar-track {
-    background: rgba(55, 150, 52, 0.1);
-    border-radius: 4px;
+.marquee-shell:hover .marquee-track {
+    animation-play-state: paused;
+    filter: saturate(1.08);
+    transition: animation-play-state 0.3s ease, filter 0.3s ease;
 }
 
-.awards-slider::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 4px;
+.marquee-shell:not(:hover) .marquee-track {
+    animation-play-state: running;
 }
 
-.awards-slider::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
-    opacity: 0.8;
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - 10px)); }
 }
 
 .award-card {
     min-width: 280px;
-    background: var(--bg-color);
-    border: none;
+    width: 280px;
+    background: var(--award-card-bg);
+    border: 1px solid var(--award-card-border);
     box-shadow: var(--neu-convex);
     border-radius: 18px;
     padding: 20px;
     text-align: center;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
     flex-shrink: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .award-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.01);
     box-shadow: var(--neu-convex-lg);
+    border-color: rgba(55, 150, 52, 0.5);
 }
 
 .award-card img {
@@ -1343,6 +1456,10 @@ body {
 
 
 @media (max-width: 769px){
+    .cursor-glow {
+        display: none;
+    }
+
     body {
         padding-top: 40px;
     }
@@ -1350,11 +1467,11 @@ body {
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 70px;
+        top: 86px;
         right: -100%;
         background-color: var(--bg-color);
         width: 100%;
-        height: calc(100vh - 80px);
+        height: calc(100vh - 86px);
         text-align: center;
         transition: right 0.4s ease;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
@@ -1489,12 +1606,23 @@ body {
         overflow-x: hidden;
     }
 
+    .marquee-shell {
+        gap: 14px;
+        padding: 10px 0 16px;
+    }
+
+    .marquee-track {
+        gap: 14px;
+        animation-duration: 20s;
+    }
+
     .awards-slider {
         gap: 15px;
     }
 
     .award-card {
-        min-width: 250px;
+        min-width: 220px;
+        width: 220px;
         padding: 15px;
     }
 
@@ -1575,7 +1703,8 @@ body {
 
 @media (max-width: 426px){
     .navbar {
-        top: 65px;
+        top: 86px;
+        height: calc(100vh - 86px);
     }
     .home {
         padding: 120px 30px 30px 30px;
@@ -1697,6 +1826,21 @@ body {
         padding: 80px 5%;
         overflow-x: hidden;
     }
+
+    .marquee-shell {
+        gap: 12px;
+        padding: 8px 0 12px;
+    }
+
+    .marquee-shell::before,
+    .marquee-shell::after {
+        width: 4%;
+    }
+
+    .marquee-track {
+        gap: 12px;
+        animation-duration: 18s;
+    }
     
     .awards-slider {
         padding: 15px 0;
@@ -1704,7 +1848,8 @@ body {
     }
 
     .award-card {
-        min-width: 220px;
+        min-width: 190px;
+        width: 190px;
         padding: 15px;
     }
 
@@ -1811,7 +1956,11 @@ body {
 
 @media (max-width: 375px){
     .navbar {
-        top: 55px;
+        top: 76px;
+        height: calc(100vh - 76px);
+    }
+    .scroll-progress-container{
+        top: 75px;
     }
     .header {
         padding: 15px 5%;
@@ -1954,13 +2103,29 @@ body {
         overflow-x: hidden;
     }
 
+    .marquee-shell {
+        gap: 10px;
+        padding: 6px 0 10px;
+    }
+
+    .marquee-shell::before,
+    .marquee-shell::after {
+        width: 3%;
+    }
+
+    .marquee-track {
+        gap: 10px;
+        animation-duration: 16s;
+    }
+
     .awards-slider {
         gap: 8px;
         padding: 10px 0;
     }
 
     .award-card {
-        min-width: 200px;
+        min-width: 170px;
+        width: 170px;
         padding: 12px;
     }
 
@@ -2062,6 +2227,16 @@ body {
 
     .about, .skills, .awards, .projects, .contact {
         padding: 80px 15px;
+    }
+}
+
+@media (max-width: 320px){
+    .navbar {
+        top: 76px;
+        height: calc(100vh - 76px);
+    }
+    .scroll-progress-container{
+        top: 75px;
     }
 }
 
